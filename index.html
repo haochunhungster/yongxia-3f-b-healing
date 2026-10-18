@@ -33,13 +33,14 @@ figcaption{font-size:13px;color:var(--mut);padding:6px 10px}
 <header><h1>3F_B 雙人療癒房｜一百組風格</h1>
 <p>詠夏 Villa 三樓西北側雙人房：包棟客人回房休息的療癒睡眠空間（180×200 大床、床頭牆包柱、窗邊長臥榻、無沙發茶几；北露台圓池 D1.80 m、池緣高出地面 45 cm）。11–20 組加入玻璃磚設計。底圖為 R14e 白模，AI 生成，每張圖都是獨立生成。AI 效果圖用來看質感，尺寸以模型為準。點圖看大圖，可以左右切換同一組的 15 個視角。</p></header>
 <nav id="nav"></nav>
+<section id="plan"><h2>平面尺寸圖</h2><a href="plan.jpg" target="_blank"><img src="plan.jpg" alt="平面尺寸圖" style="width:100%;max-width:1200px;display:block;border-radius:10px;background:#fff"></a><p style="color:var(--mut);font-size:13px">單位 cm，尺寸取自 Blender 模型；點圖開原尺寸。施工以設計師圖面與現場丈量為準。</p></section>
 <div id="list"></div>
 <div id="lb"><button class="x" aria-label="關閉">×</button><button class="p" aria-label="上一張">‹</button><img alt=""><div class="cap"></div><button class="n" aria-label="下一張">›</button></div>
 <script src="data.js"></script>
 <script>
 const S=[['00','白模底圖']].concat(DATA.styles),V=DATA.views,pad=i=>String(i+1).padStart(2,'0');
 const file=(n,i)=>n==='00'?`clay_v${pad(i)}.jpg`:`s${n}_v${pad(i)}.jpg`;
-document.getElementById('nav').innerHTML=S.map(([n,nm])=>`<a href="#s${n}">${n==='00'?'':n+' '}${nm}</a>`).join('');
+document.getElementById('nav').innerHTML='<a href="#plan">平面尺寸圖</a>'+S.map(([n,nm])=>`<a href="#s${n}">${n==='00'?'':n+' '}${nm}</a>`).join('');
 document.getElementById('list').innerHTML=S.map(([n,nm])=>`<section id="s${n}"><h2>${n==='00'?'':`<span>${n}</span>`}${nm}</h2><div class="row">`+
   V.map((v,i)=>`<figure data-n="${n}" data-i="${i}"><img loading="lazy" src="thumb/${file(n,i)}" alt="${nm} ${v.slice(2)}"><figcaption>${v.slice(2)}</figcaption></figure>`).join('')+`</div></section>`).join('');
 const lb=document.getElementById('lb'),img=lb.querySelector('img'),cap=lb.querySelector('.cap');let cn,ci;
